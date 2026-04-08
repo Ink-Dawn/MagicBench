@@ -1,0 +1,168 @@
+{
+    "Multimodal (Skeptic)": {
+        "Type A: Direct Lie": {
+            "count": 146,
+            "VTG": 55.41,
+            "CPA": 35.75,
+            "CFR": 57.4
+        },
+        "Type B: Misdirection": {
+            "count": 38,
+            "VTG": 59.74,
+            "CPA": 43.95,
+            "CFR": 61.32
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 39.78,
+            "CPA": 29.78,
+            "CFR": 41.76
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 17.04,
+            "CPA": 10.37,
+            "CFR": 16.67
+        },
+        "Total": {
+            "count": 302,
+            "VTG": 47.81,
+            "CPA": 32.72,
+            "CFR": 49.54
+        },
+        "Deceptive_Avg_CPA": 37.45
+    },
+    "Multimodal (Neutral)": {
+        "Type A: Direct Lie": {
+            "count": 146,
+            "VTG": 53.36,
+            "CPA": 35.55,
+            "CFR": 55.27
+        },
+        "Type B: Misdirection": {
+            "count": 38,
+            "VTG": 48.95,
+            "CPA": 34.47,
+            "CFR": 48.16
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 37.8,
+            "CPA": 25.6,
+            "CFR": 36.37
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 14.44,
+            "CPA": 4.44,
+            "CFR": 9.63
+        },
+        "Total": {
+            "count": 302,
+            "VTG": 44.64,
+            "CPA": 29.64,
+            "CFR": 44.6
+        },
+        "Deceptive_Avg_CPA": 35.33
+    },
+    "Vision-Only (Capability Probe)": {
+        "Type A: Direct Lie": {
+            "count": 144,
+            "VTG": 54.38,
+            "CPA": 32.99,
+            "CFR": 45.21
+        },
+        "Type B: Misdirection": {
+            "count": 37,
+            "VTG": 52.97,
+            "CPA": 38.11,
+            "CFR": 47.03
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 54.51,
+            "CPA": 34.51,
+            "CFR": 49.12
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 50.37,
+            "CPA": 28.15,
+            "CFR": 40.0
+        },
+        "Total": {
+            "count": 299,
+            "VTG": 53.88,
+            "CPA": 33.65,
+            "CFR": 46.15
+        },
+        "Deceptive_Avg_CPA": 34.03
+    },
+    "Truth Context (Upper Bound)": {
+        "Type A: Direct Lie": {
+            "count": 141,
+            "VTG": 81.42,
+            "CPA": 86.67,
+            "CFR": 89.86
+        },
+        "Type B: Misdirection": {
+            "count": 37,
+            "VTG": 82.97,
+            "CPA": 87.03,
+            "CFR": 92.16
+        },
+        "Type C: Patter": {
+            "count": 86,
+            "VTG": 82.79,
+            "CPA": 86.98,
+            "CFR": 90.35
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 80.74,
+            "CPA": 86.3,
+            "CFR": 90.37
+        },
+        "Total": {
+            "count": 291,
+            "VTG": 81.96,
+            "CPA": 86.77,
+            "CFR": 90.34
+        },
+        "Deceptive_Avg_CPA": 86.74
+    },
+    "Multimodal (Forensic)": {
+        "Type A: Direct Lie": {
+            "count": 139,
+            "VTG": 59.42,
+            "CPA": 43.38,
+            "CFR": 61.22
+        },
+        "Type B: Misdirection": {
+            "count": 36,
+            "VTG": 56.39,
+            "CPA": 43.33,
+            "CFR": 58.89
+        },
+        "Type C: Patter": {
+            "count": 88,
+            "VTG": 50.8,
+            "CPA": 33.64,
+            "CFR": 46.36
+        },
+        "Type D: No Audio": {
+            "count": 24,
+            "VTG": 35.42,
+            "CPA": 15.83,
+            "CFR": 24.58
+        },
+        "Total": {
+            "count": 287,
+            "VTG": 54.39,
+            "CPA": 38.08,
+            "CFR": 53.31
+        },
+        "Deceptive_Avg_CPA": 43.37
+    }
+}
+

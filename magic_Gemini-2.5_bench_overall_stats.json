@@ -1,0 +1,167 @@
+{
+    "Truth Context (Upper Bound)": {
+        "Type A: Direct Lie": {
+            "count": 138,
+            "VTG": 85.94,
+            "CPA": 95.07,
+            "CFR": 97.17
+        },
+        "Type B: Misdirection": {
+            "count": 35,
+            "VTG": 87.14,
+            "CPA": 92.0,
+            "CFR": 96.57
+        },
+        "Type C: Patter": {
+            "count": 84,
+            "VTG": 87.86,
+            "CPA": 93.81,
+            "CFR": 97.62
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 87.78,
+            "CPA": 95.56,
+            "CFR": 98.15
+        },
+        "Total": {
+            "count": 284,
+            "VTG": 86.83,
+            "CPA": 94.37,
+            "CFR": 97.32
+        },
+        "Deceptive_Avg_CPA": 94.45
+    },
+    "Multimodal (Forensic)": {
+        "Type A: Direct Lie": {
+            "count": 146,
+            "VTG": 70.48,
+            "CPA": 42.12,
+            "CFR": 66.03
+        },
+        "Type B: Misdirection": {
+            "count": 38,
+            "VTG": 67.11,
+            "CPA": 45.79,
+            "CFR": 66.05
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 61.32,
+            "CPA": 38.35,
+            "CFR": 53.74
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 57.78,
+            "CPA": 37.78,
+            "CFR": 58.15
+        },
+        "Total": {
+            "count": 302,
+            "VTG": 66.16,
+            "CPA": 41.06,
+            "CFR": 61.62
+        },
+        "Deceptive_Avg_CPA": 42.88
+    },
+    "Multimodal (Neutral)": {
+        "Type A: Direct Lie": {
+            "count": 143,
+            "VTG": 63.71,
+            "CPA": 44.55,
+            "CFR": 66.57
+        },
+        "Type B: Misdirection": {
+            "count": 37,
+            "VTG": 65.41,
+            "CPA": 50.81,
+            "CFR": 67.84
+        },
+        "Type C: Patter": {
+            "count": 89,
+            "VTG": 54.83,
+            "CPA": 34.04,
+            "CFR": 49.89
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 48.15,
+            "CPA": 22.96,
+            "CFR": 42.96
+        },
+        "Total": {
+            "count": 296,
+            "VTG": 59.83,
+            "CPA": 40.2,
+            "CFR": 59.56
+        },
+        "Deceptive_Avg_CPA": 45.83
+    },
+    "Multimodal (Skeptic)": {
+        "Type A: Direct Lie": {
+            "count": 146,
+            "VTG": 67.05,
+            "CPA": 48.77,
+            "CFR": 68.36
+        },
+        "Type B: Misdirection": {
+            "count": 38,
+            "VTG": 64.21,
+            "CPA": 46.32,
+            "CFR": 63.95
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 61.76,
+            "CPA": 44.51,
+            "CFR": 60.22
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 54.07,
+            "CPA": 39.63,
+            "CFR": 55.93
+        },
+        "Total": {
+            "count": 302,
+            "VTG": 63.94,
+            "CPA": 46.36,
+            "CFR": 64.24
+        },
+        "Deceptive_Avg_CPA": 48.26
+    },
+    "Vision-Only (Capability Probe)": {
+        "Type A: Direct Lie": {
+            "count": 146,
+            "VTG": 59.93,
+            "CPA": 47.33,
+            "CFR": 51.92
+        },
+        "Type B: Misdirection": {
+            "count": 38,
+            "VTG": 56.58,
+            "CPA": 46.32,
+            "CFR": 51.84
+        },
+        "Type C: Patter": {
+            "count": 91,
+            "VTG": 59.12,
+            "CPA": 46.26,
+            "CFR": 53.52
+        },
+        "Type D: No Audio": {
+            "count": 27,
+            "VTG": 61.11,
+            "CPA": 50.74,
+            "CFR": 58.52
+        },
+        "Total": {
+            "count": 302,
+            "VTG": 59.37,
+            "CPA": 47.19,
+            "CFR": 52.98
+        },
+        "Deceptive_Avg_CPA": 47.12
+    }
+}

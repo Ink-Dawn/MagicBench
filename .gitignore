@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Public release curation
+# Ignore most Python scripts by default and only keep the public-facing core code.
+*.py
+!annotate_linguistics.py
+!auto_cut.py
+!figure.py
+!figure3.py
+!ROI.py
+!sampling.py
+!MagicBench_Supplementary/evaluation_code/*.py
+
+# Environments and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Editors and local temp files
+.vscode/
+tempCodeRunnerFile.py
+downloaded_history.txt
+crop_checkpoint.json
+onda
+rsync
+
+# Large local assets that should not go to GitHub
+final_clips_dataset/
+magic_dataset_raw/
+magic_dataset_raw_new/
+frames/
+case/
+offline_packages/
+linux_packages/
+vl3_offline/
+ffmpeg/
+ffmep/
+croc/
+tmux/
+results/
+roi_results/
+v2/
+MagicBench_Supplementary/dataset_samples/
+
+# Model checkpoints and packaged binaries
+*.pt
+*.whl
+*.zip
+*.tar.gz
+*.tar.xz
+*.exe
+
+# Raw media
+*.mp4
+
+# Internal paper assets and drafts
+/Appendix_*.pdf
+/Figure*.pdf
+/Figure_*.pdf
+/MagicBench_*Matrix.pdf
+/figure2_paradox.pdf
+/figure4_final.png
+/Gemini-2.5_*.png
+/gpt4o_*.png
+/qwen_*.png
+/performance_comparison_bar*.png
+/robustness_trend_line*.png
+/result_*.png
+/audit_results_auto.json
+/inversion_cases_study.json
+/magic_bench_dataset*.json
+/magic_qwen_bench_overall_stats.json
+/meta_eval_50_samples.json
+/table_2_gemini_Forensic_data.csv
+/type_a_raw_scores.json
+/rebuttal*.md
+/reviewer3.md
+/task.md
+/task_new.md
+/task.html
+/论文大纲*.md
+
+# Experimental scratch files
+test_simple.py

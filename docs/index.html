@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MagicBench</title>
+    <meta
+      name="description"
+      content="MagicBench is an ACL-accepted benchmark for diagnosing visual agency loss and semantic dependency in multimodal LLMs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">ACL Accepted • Multimodal Reasoning Benchmark</p>
+          <h1>MagicBench</h1>
+          <p class="hero-subtitle">
+            Diagnosing visual agency loss and semantic dependency in multimodal
+            LLMs through magic videos.
+          </p>
+          <p class="hero-body">
+            MagicBench turns magic performances into semantically adversarial
+            reasoning tasks. It asks a simple but revealing question: when audio
+            conflicts with visual evidence, do current multimodal models truly
+            reason over what they see, or do they follow language as a crutch?
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="./assets/paper/final.pdf">Paper PDF</a>
+            <a class="button secondary" href="#findings">Key Findings</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <div class="panel-label">Project Snapshot</div>
+          <dl class="hero-stats">
+            <div>
+              <dt>Clips</dt>
+              <dd>302</dd>
+            </div>
+            <div>
+              <dt>Audio Conditions</dt>
+              <dd>4</dd>
+            </div>
+            <div>
+              <dt>Core Metrics</dt>
+              <dd>VTG / CPA / CFR</dd>
+            </div>
+            <div>
+              <dt>Judge Meta-Eval</dt>
+              <dd>r = 0.943</dd>
+            </div>
+          </dl>
+        </aside>
+      </header>
+
+      <main>
+        <section class="section grid-section">
+          <div class="section-heading">
+            <p class="kicker">Why This Benchmark</p>
+            <h2>Magic is a clean stress test for multimodal reasoning.</h2>
+          </div>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>Semantic conflict</h3>
+              <p>
+                The magician's narration can be false, distracting, or absent.
+                This lets us probe how language reshapes visual reasoning under
+                controlled multimodal conflict.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Physical constraints</h3>
+              <p>
+                Evaluation focuses on whether a model recovers the physical
+                mechanism behind the illusion rather than merely repeating the
+                visible effect.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Causal diagnosis</h3>
+              <p>
+                The benchmark distinguishes between attention anchoring, causal
+                confusion, and counterfactual resilience through separate
+                metrics.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="findings">
+          <div class="section-heading">
+            <p class="kicker">Main Findings</p>
+            <h2>The same language signal can help models look and hurt them think.</h2>
+          </div>
+          <div class="finding-grid">
+            <article class="finding-card accent-gold">
+              <h3>Spotlight Effect</h3>
+              <p>
+                On deceptive clips, multimodal models remain competitive with or
+                slightly above vision-only on average CPA, suggesting that even
+                false language can anchor attention to the right object.
+              </p>
+              <ul>
+                <li>GPT-4o: 37.45 vs 34.03 deceptive-average CPA</li>
+                <li>Gemini-2.5: 48.26 vs 47.12</li>
+                <li>Qwen2.5-VL: 33.79 vs 32.83</li>
+              </ul>
+            </article>
+            <article class="finding-card accent-red">
+              <h3>Crutch Effect</h3>
+              <p>
+                Once audio disappears, multimodal models fall behind. Vision-only
+                outperforms multimodal on Type D across all three reported model
+                families.
+              </p>
+              <ul>
+                <li>GPT-4o: 10.37 → 28.15 CPA</li>
+                <li>Gemini-2.5: 39.63 → 50.74</li>
+                <li>Qwen2.5-VL: 6.15 → 30.62</li>
+              </ul>
+            </article>
+            <article class="finding-card accent-green">
+              <h3>Causal Intervention</h3>
+              <p>
+                Manually restoring the model's visual focus with a targeted cue
+                recovers performance, supporting the claim that failure comes
+                from attention hijacking rather than missing world knowledge.
+              </p>
+              <ul>
+                <li>Vision-only TAR: 0.3441</li>
+                <li>Multimodal-lie TAR: 0.0409</li>
+                <li>Intervention TAR: 0.8479</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section visual-section">
+          <div class="section-heading">
+            <p class="kicker">Qualitative Evidence</p>
+            <h2>Attention can be hijacked, then force-restored.</h2>
+          </div>
+          <figure class="figure-card feature-figure">
+            <img
+              src="./assets/figures/figure4_final.png"
+              alt="Vision-only, multimodal-lie, and intervention attention comparison"
+            />
+            <figcaption>
+              A representative intervention result. Under deceptive multimodal
+              input, attention drifts away from the critical hand region; adding
+              a visual pointer restores focus and recovers the right inference.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="kicker">Benchmark Results</p>
+            <h2>Performance trends are consistent across linguistic conditions.</h2>
+          </div>
+          <div class="figure-grid">
+            <figure class="figure-card">
+              <img
+                src="./assets/figures/performance_comparison_bar.png"
+                alt="Performance comparison across linguistic types"
+              />
+              <figcaption>
+                Breakdown across VTG, CPA, and CFR for different linguistic
+                conditions.
+              </figcaption>
+            </figure>
+            <figure class="figure-card">
+              <img
+                src="./assets/figures/robustness_trend_line.png"
+                alt="Robustness trend from Type A to Type D"
+              />
+              <figcaption>
+                Multimodal performance drops sharply as linguistic support
+                disappears, while vision-only remains more stable.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="kicker">Dataset Snapshot</p>
+            <h2>302 annotated clips with explicit linguistic stratification.</h2>
+          </div>
+          <div class="table-grid">
+            <article class="table-card">
+              <h3>Linguistic Conditions</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Condition</th>
+                    <th>Clips</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Type A: Direct Lie</td>
+                    <td>146</td>
+                  </tr>
+                  <tr>
+                    <td>Type B: Misdirection</td>
+                    <td>37</td>
+                  </tr>
+                  <tr>
+                    <td>Type C: Patter</td>
+                    <td>91</td>
+                  </tr>
+                  <tr>
+                    <td>Type D: No Audio</td>
+                    <td>28</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="table-card">
+              <h3>Difficulty Levels</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Level</th>
+                    <th>Clips</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Beginner</td>
+                    <td>96</td>
+                  </tr>
+                  <tr>
+                    <td>Basic</td>
+                    <td>127</td>
+                  </tr>
+                  <tr>
+                    <td>Intermediate</td>
+                    <td>71</td>
+                  </tr>
+                  <tr>
+                    <td>Advanced</td>
+                    <td>8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+        </section>
+
+        <section class="section release-section">
+          <div class="section-heading">
+            <p class="kicker">Release Notes</p>
+            <h2>Use GitHub for the paper and lightweight artifacts, not for the raw lab.</h2>
+          </div>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>Keep in the repo</h3>
+              <p>
+                README, project homepage, paper PDF, aggregate statistics,
+                figures, and cleaned supplementary scripts.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Host externally</h3>
+              <p>
+                Raw videos, extracted frames, checkpoints, package caches, and
+                large offline binaries should go to Hugging Face, Releases, or
+                cloud storage.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Security</h3>
+              <p>
+                Never publish hardcoded API keys. Use environment variables and
+                keep <code>.env</code> out of version control.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section citation-section" id="citation">
+          <div class="section-heading">
+            <p class="kicker">Citation</p>
+            <h2>Update the placeholder with the final ACL Anthology record.</h2>
+          </div>
+          <pre><code>@inproceedings{magicbench_acl,
+  title     = {MagicBench: Diagnosing Visual Agency Loss and Semantic Dependency in Multimodal LLMs},
+  author    = {TBA},
+  booktitle = {Proceedings of the Annual Meeting of the Association for Computational Linguistics},
+  year      = {2026}
+}</code></pre>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
