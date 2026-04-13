@@ -9,6 +9,7 @@ MagicBench is a benchmark for diagnosing visual agency loss and semantic depende
 ## Quick Links
 
 - [Paper PDF](docs/assets/paper/final.pdf)
+- [Dataset Download (Baidu Netdisk)](https://pan.baidu.com/s/13veWd4WVU0rN8vpkmnbfiw?pwd=y36t)
 - [Project Homepage Source](docs/index.html)
 - [Supplementary Evaluation Code](MagicBench_Supplementary/evaluation_code)
 - [License](LICENSE)
@@ -59,6 +60,25 @@ We evaluate whether a model can recover the physical mechanism behind the illusi
 - Difficulty split: `96` beginner, `127` basic, `71` intermediate, `8` advanced
 - Frequent challenge types include `Fast Motion`, `Occlusion`, `Tiny Object`, `Logic Puzzle`, and `Physics Defy`
 
+## Dataset Files
+
+The shared archive contains multiple JSON variants. The most useful ones are:
+
+- `magic_bench_dataset_with_timestamps.json`: the original `302`-clip release with `transcript`, `audio_timeline`, `visual_timeline`, and legacy `linguistic_type`
+- `magic_bench_dataset_pro.json`: the expanded JSON file used for later extension experiments
+- `magic_bench_dataset_with_timestamps_full.json`: generated locally after adding timestamps to the newly added clips
+- `magic_bench_dataset_linguistic_balanced.json`: generated locally after assigning `linguistic_type` to the new clips while freezing old labels
+
+If you only want to evaluate models on the released benchmark, you usually only need:
+
+- the dataset archive from Baidu Netdisk
+- the JSON file you want to evaluate
+- the extracted frame folders
+- `MagicBench_Supplementary/evaluation_code/run_experiment.py`
+- `MagicBench_Supplementary/evaluation_code/auto_judge.py`
+
+You do not need to run `merge_transcripts_with_timestamps.py` or `annotate_linguistics.py` unless you are extending MagicBench with new videos.
+
 ## Key Figures
 
 ### Performance Across Linguistic Types
@@ -76,9 +96,10 @@ We evaluate whether a model can recover the physical mechanism behind the illusi
 |- docs/                              # GitHub Pages homepage and public assets
 |- MagicBench_Supplementary/          # Supplementary release materials
 |- final_clips_dataset/               # Local video assets (do not push directly to GitHub)
+|- merge_transcripts_with_timestamps.py # Add audio timestamps to newly added clips
 |- results/                           # Model outputs and judged results
 |- roi_results/                       # ROI annotation assets for intervention analysis
-|- annotate_linguistics.py            # Linguistic type annotation pipeline
+|- annotate_linguistics.py            # Linguistic type annotation and balancing pipeline
 |- auto_cut.py                        # Scene splitting and clip preparation
 |- figure.py / figure3.py             # Public plotting scripts
 |- magic_bench_dataset*.json          # Dataset JSON files
@@ -109,9 +130,159 @@ If you plan to publish this project on GitHub, keep the repository lightweight a
 
 This repository already includes a GitHub Pages homepage under [`docs/`](docs). After pushing to GitHub, enable Pages with the `main` branch and `/docs` folder.
 
+## How To Use MagicBench
+
+### 1. Download the dataset
+
+Download the full MagicBench package from Baidu Netdisk:
+
+- Link: [https://pan.baidu.com/s/13veWd4WVU0rN8vpkmnbfiw?pwd=y36t](https://pan.baidu.com/s/13veWd4WVU0rN8vpkmnbfiw?pwd=y36t)
+- Extraction code: `y36t`
+
+The safest choice is to keep the extracted folder structure unchanged. A recommended local layout is:
+
+```text
+MagicBench/
+|- MagicBench_Supplementary/
+|- docs/
+|- frames/
+|  |- final_clips_dataset/
+|- final_clips_dataset/
+|- magic_bench_dataset_with_timestamps.json
+|- magic_bench_dataset_pro.json
+|- README.md
+```
+
+If you extract the data to a different location, you must update the path variables listed below.
+
+### 2. Install dependencies
+
+For the public evaluation code:
+
+```bash
+pip install -r MagicBench_Supplementary/evaluation_code/requirements.txt
+```
+
+If you want to extend the dataset with new clips and regenerate timestamps, also install:
+
+```bash
+pip install openai-whisper torch tqdm
+```
+
+If you use `merge_transcripts_with_timestamps.py`, make sure `ffmpeg` is installed and accessible on your machine.
+
+### 3. Fill in your API key
+
+There are two different configuration styles in this repository.
+
+For [`annotate_linguistics.py`](annotate_linguistics.py), the script reads environment variables:
+
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_BASE_URL`
+
+PowerShell example:
+
+```powershell
+$env:OPENROUTER_API_KEY="your_openrouter_key"
+$env:OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
+python annotate_linguistics.py
+```
+
+The file [`.env.example`](.env.example) shows the variable names, but the script does not automatically load `.env`. You still need to set the environment variables in your shell or runtime environment.
+
+For the public evaluation scripts, fill the key directly in the file header:
+
+- [`MagicBench_Supplementary/evaluation_code/run_experiment.py`](MagicBench_Supplementary/evaluation_code/run_experiment.py): set `API_KEY = ""`
+- [`MagicBench_Supplementary/evaluation_code/auto_judge.py`](MagicBench_Supplementary/evaluation_code/auto_judge.py): set `API_KEY = ""`
+
+In both files, you can usually keep:
+
+```python
+BASE_URL = "https://openrouter.ai/api/v1"
+```
+
+unless you are using a different provider endpoint.
+
+### 4. Replace the local paths
+
+The following variables usually need to be edited before running the scripts:
+
+| File | Variables to edit | What they should point to |
+| --- | --- | --- |
+| `merge_transcripts_with_timestamps.py` | `FFMPEG_DIR`, `INPUT_JSON`, `BASE_JSON`, `OUTPUT_JSON`, `MODEL_PATH` | Your local `ffmpeg` directory, the expanded dataset JSON, the old timestamped JSON, the output JSON, and your Whisper checkpoint |
+| `MagicBench_Supplementary/evaluation_code/run_experiment.py` | `INPUT_JSON`, `FRAMES_ROOT`, `OUTPUT_DIR` | The JSON you want to evaluate, the extracted frame root, and the directory for saving model outputs |
+| `MagicBench_Supplementary/evaluation_code/auto_judge.py` | `INPUT_FILES` | A list of result JSON files produced by `run_experiment.py` |
+| `ROI.py` | `INPUT_IMAGE_DIR` | The local directory containing images for ROI annotation |
+| `sampling.py` | hardcoded result JSON paths near the top of the file | The result files you want to sample from |
+
+Recommended values for the evaluation pipeline:
+
+- In [`MagicBench_Supplementary/evaluation_code/run_experiment.py`](MagicBench_Supplementary/evaluation_code/run_experiment.py), set `INPUT_JSON` to a dataset JSON such as `magic_bench_dataset_with_timestamps.json`
+- Set `FRAMES_ROOT` to the directory that contains the extracted frame subfolders, for example `D:\\MagicBench\\frames\\final_clips_dataset`
+- `OUTPUT_DIR` can usually stay as `results`
+
+Example:
+
+```python
+API_KEY = "your_openrouter_key"
+INPUT_JSON = r"D:\MagicBench\magic_bench_dataset_with_timestamps.json"
+FRAMES_ROOT = r"D:\MagicBench\frames\final_clips_dataset"
+OUTPUT_DIR = "results"
+```
+
+For [`MagicBench_Supplementary/evaluation_code/auto_judge.py`](MagicBench_Supplementary/evaluation_code/auto_judge.py), add the generated result files to `INPUT_FILES`, for example:
+
+```python
+INPUT_FILES = [
+    r"results/gemini-2.5-flash_multimodal_Forensic_v4.json",
+    r"results/gpt-4o_multimodal_Forensic_v4.json",
+    r"results/qwen-2.5-vl_multimodal_Forensic_v4.json",
+]
+```
+
+### 5. Run the benchmark
+
+Run model inference first:
+
+```bash
+python MagicBench_Supplementary/evaluation_code/run_experiment.py
+```
+
+This writes result files such as:
+
+- `results/gemini-2.5-flash_multimodal_Forensic_v4.json`
+- `results/gpt-4o_multimodal_Forensic_v4.json`
+- `results/qwen-2.5-vl_multimodal_Forensic_v4.json`
+
+Then run the automatic judge:
+
+```bash
+python MagicBench_Supplementary/evaluation_code/auto_judge.py
+```
+
+This writes judged files with the suffix `_judged_v2.json`.
+
+### 6. Extend the dataset with new clips
+
+If you add new videos and want to regenerate timestamps and linguistic labels, use the following order:
+
+1. Run [`merge_transcripts_with_timestamps.py`](merge_transcripts_with_timestamps.py) to append `audio_timeline` and `transcript` for the new items.
+2. Run [`annotate_linguistics.py`](annotate_linguistics.py) to classify the new clips and rebalance `linguistic_type`.
+
+`annotate_linguistics.py` assumes:
+
+- `magic_bench_dataset_with_timestamps.json` is the frozen legacy base file
+- `magic_bench_dataset_with_timestamps_full.json` is the merged full dataset containing the new items
+
+Outputs generated by that script:
+
+- `magic_bench_dataset_linguistic_balanced.json`
+- `linguistic_type_cache.json`
+- `linguistic_type_balance_report.json`
+
 ## Reproducibility Notes
 
-Before running the scripts, set your API key through environment variables instead of hardcoding secrets:
+Use environment variables whenever possible instead of committing secrets into scripts:
 
 ```bash
 OPENROUTER_API_KEY=your_key_here
@@ -122,14 +293,13 @@ Public supplementary code with sanitized configuration lives in [`MagicBench_Sup
 
 ## Citation
 
-Replace the placeholder below with the final ACL Anthology metadata before the public release.
-
 ```bibtex
-@inproceedings{magicbench_acl,
-  title     = {MagicBench: Diagnosing Visual Agency Loss and Semantic Dependency in Multimodal LLMs},
-  author    = {TBA},
-  booktitle = {Proceedings of the Annual Meeting of the Association for Computational Linguistics},
-  year      = {2026}
+@inproceedings{anonymous2026magicbench,
+  title={MagicBench: Diagnosing Visual Agency Loss and Semantic Dependency in Multimodal {LLM}s},
+  author={Anonymous},
+  booktitle={The 64th Annual Meeting of the Association for Computational Linguistics},
+  year={2026},
+  url={https://openreview.net/forum?id=JeJEgZoXPm}
 }
 ```
 
