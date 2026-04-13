@@ -53,12 +53,6 @@ We evaluate whether a model can recover the physical mechanism behind the illusi
 - `Crutch effect`: once language disappears, visual agency degrades sharply in multimodal setups.
 - `Causal intervention`: manually restoring attention with visual prompts helps recover correct reasoning.
 
-## Dataset Snapshot
-
-- `302` annotated magic clips in total
-- Linguistic split: `146` direct lies, `37` misdirection clips, `91` patter clips, `28` no-audio clips
-- Difficulty split: `96` beginner, `127` basic, `71` intermediate, `8` advanced
-- Frequent challenge types include `Fast Motion`, `Occlusion`, `Tiny Object`, `Logic Puzzle`, and `Physics Defy`
 
 ## Dataset Files
 
