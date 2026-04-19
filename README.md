@@ -9,7 +9,7 @@ MagicBench is a diagnostic benchmark for evaluating visual agency loss and seman
 ## Quick Links
 
 - [Paper (OpenReview)](https://openreview.net/forum?id=JeJEgZoXPm)
--[Dataset Download (Baidu Netdisk)](https://pan.baidu.com/s/13veWd4WVU0rN8vpkmnbfiw?pwd=y36t) *(Extraction code: `y36t`)*
+- [Dataset Download (Baidu Netdisk)](https://pan.baidu.com/s/13veWd4WVU0rN8vpkmnbfiw?pwd=y36t) *(Extraction code: `y36t`)*
 - [Project Homepage](docs/index.html)
 - [License](LICENSE)
 
