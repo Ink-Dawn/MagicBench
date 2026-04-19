@@ -1,4 +1,3 @@
-```markdown
 # MagicBench
 
 *Accepted at ACL 2026.*
