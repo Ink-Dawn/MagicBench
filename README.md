@@ -17,23 +17,26 @@ MagicBench is a diagnostic benchmark for evaluating visual agency loss and seman
 
 MagicBench pairs visual evidence with four linguistic conditions: `Type A` (Direct Lie), `Type B` (Misdirection), `Type C` (Patter), and `Type D` (Silence/No Audio). We evaluate models across Visual-Temporal Grounding (VTG), Causal-Physical Accuracy (CPA), and Counterfactual Resilience (CFR).
 
-1. **The Spotlight Effect:** Deceptive language still acts as an attentional spotlight. Under deceptive prompts, multimodal models often perform comparably to or slightly better than their vision-only counterparts.
-2. **The Crutch Effect (Visual Agency Loss):** When audio is completely removed (`Type D`), multimodal performance collapses, whereas vision-only probes maintain robust causal reasoning.
+1. **The Spotlight Effect:** In deceptive scenarios (`Type A` & `Type B`), entity nouns act as semantic anchors that facilitate visual grounding. Multimodal models often outperform their vision-only counterparts despite the false predicates.
+2. **The Crutch Effect (Visual Agency Loss):** In semantic vacuums (`Type D`), multimodal performance collapses significantly (e.g., GPT-4o drops 12.4%), revealing a persistent under-utilization of available visual evidence when linguistic triggers are absent. 
 
-| Model | Deceptive Avg CPA (Multi) | Deceptive Avg CPA (Vision) | Type D CPA (Multi) | Type D CPA (Vision) |
-| :--- | :---: | :---: | :---: | :---: |
-| **GPT-4o** | 37.45 | 34.03 | **10.37** | 28.15 |
-| **Gemini-2.5-Pro** | 48.26 | 47.12 | **39.63** | 50.74 |
-| **Qwen2.5-VL-72B** | 33.79 | 32.83 | **6.15** | 30.62 |
+**Causal-Physical Accuracy (CPA) Comparison (from Table 3):**
 
-*Conclusion:* Current early-fusion MLLMs behave more like *language-guided observers* than autonomous visual reasoners.
+| Model | Type A (Lie)<br>Multi / Vision | Type B (Misdirection)<br>Multi / Vision | Type D (Silence)<br>Multi / Vision |
+| :--- | :---: | :---: | :---: |
+| **GPT-4o** | **43.4** / 33.0 | **43.3** / 38.1 | 15.8 / **28.2** |
+| **Gemini-2.5-Pro** | 42.1 / **47.3** | 45.8 / **46.3** | 37.8 / **50.7** |
+| **Qwen2.5-VL-72B**| **48.7** / 32.4 | **40.3** / 34.5 | 22.7 / **30.6** |
+
+*(Note: "Multi" refers to the Symmetric Intensity Ablation `Multi-Forensic` setting, and "Vision" refers to the `Vision-Only` capability probe.)*
+
+*Conclusion:* Current early-fusion MLLMs behave more like *language-guided passive observers* than autonomous visual reasoners.
 
 ## Dataset Snapshot
 
-- **Size:** 302 annotated high-fidelity magic clips.
-- **Linguistic Split:** 146 Direct Lies, 37 Misdirections, 91 Patters, 28 Silence.
-- **Difficulty:** 96 Beginner, 127 Basic, 71 Intermediate, 8 Advanced.
-- **Challenges:** Fast Motion, Occlusion, Tiny Objects, Logic Puzzles, Physics Defiance.
+- **Size:** 402 annotated high-fidelity magic videos.
+- **Linguistic Split:** 146 Direct Lies (Type A), 91 Misdirections (Type B), 83 Patters (Type C), 82 Silences (Type D).
+- **Physical Constraint Set (PCS):** Grounded in First-Order Logic to verify Object Permanence, Kinematic Continuity, and Visual Supremacy.
 
 ## Repository Structure
 
@@ -90,9 +93,9 @@ python MagicBench_Supplementary/evaluation_code/auto_judge.py
 
 ```bibtex
 @inproceedings{
-  anonymous2026magicbench,
+  huang2026magicbench,
   title={MagicBench: Diagnosing Visual Agency Loss and Semantic Dependency in Multimodal {LLM}s},
-  author={Anonymous},
+  author={Tang Da Huang and Weidong Tang and Wen Qi Xu and Xianpeng Guo},
   booktitle={The 64th Annual Meeting of the Association for Computational Linguistics},
   year={2026},
   url={https://openreview.net/forum?id=JeJEgZoXPm}
@@ -101,5 +104,3 @@ python MagicBench_Supplementary/evaluation_code/auto_judge.py
 
 ## License
 This project is released under the [MIT License](LICENSE).
-
-
