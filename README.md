@@ -101,5 +101,5 @@ python MagicBench_Supplementary/evaluation_code/auto_judge.py
 
 ## License
 This project is released under the [MIT License](LICENSE).
-```
+
 
