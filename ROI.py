@@ -37,7 +37,7 @@ def batch_annotate_roi():
     # 获取文件夹内所有图片
     valid_extensions = (".jpg", ".jpeg", ".png", ".bmp")
     if not os.path.exists(INPUT_IMAGE_DIR):
-        print(f"❌ 错误：找不到输入文件夹 {INPUT_IMAGE_DIR}")
+        print(f" 错误：找不到输入文件夹 {INPUT_IMAGE_DIR}")
         return
 
     image_files = [
@@ -50,12 +50,12 @@ def batch_annotate_roi():
     else:
         all_results = {}
 
-    print(f"🚀 开始批量标注，共 {len(image_files)} 张图片")
-    print("💡 操作提示：鼠标拖拽画框，【空格】确认，【ESC】退出")
+    print(f" 开始批量标注，共 {len(image_files)} 张图片")
+    print(" 操作提示：鼠标拖拽画框，【空格】确认，【ESC】退出")
 
     for filename in image_files:
         if filename in all_results:
-            print(f"⏩ 跳过已标注: {filename}")
+            print(f" 跳过已标注: {filename}")
             continue
 
         img_path = os.path.join(INPUT_IMAGE_DIR, filename)
@@ -64,7 +64,7 @@ def batch_annotate_roi():
         img = cv_imread(img_path)
 
         if img is None:
-            print(f"❌ 读取失败，请检查文件: {img_path}")
+            print(f" 读取失败，请检查文件: {img_path}")
             continue
 
         h, w, _ = img.shape
@@ -76,7 +76,7 @@ def batch_annotate_roi():
 
         x, y, rw, rh = roi
         if rw == 0 or rh == 0:
-            print(f"⚠️ 未选框，跳过: {filename}")
+            print(f" 未选框，跳过: {filename}")
             continue
 
         # 1. 归一化坐标
@@ -100,9 +100,9 @@ def batch_annotate_roi():
         with open(JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(all_results, f, indent=4, ensure_ascii=False)
 
-        print(f"✅ 已保存: {filename} -> ROI: {roi_coords}")
+        print(f" 已保存: {filename} -> ROI: {roi_coords}")
 
-    print(f"\n✨ 标注任务完成！结果已保存至: {OUTPUT_DIR}")
+    print(f"\n 标注任务完成！结果已保存至: {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

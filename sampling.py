@@ -20,7 +20,7 @@ OUTPUT_JSON = "meta_eval_50_samples.json"
 
 def load_json(filepath):
     if not os.path.exists(filepath):
-        print(f"⚠️ 文件不存在: {filepath}")
+        print(f" 文件不存在: {filepath}")
         return []
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -36,14 +36,14 @@ def create_dataset_map(original_data):
 
 
 def sample_strategy():
-    print("🔄 正在加载原始数据集...")
+    print(" 正在加载原始数据集...")
     original_data = load_json(ORIGINAL_DATASET_PATH)
     if not original_data:
         return
 
     # 建立索引映射，加速查找
     original_map = create_dataset_map(original_data)
-    print(f"✅ 原始数据集加载完毕，共 {len(original_map)} 条数据。")
+    print(f" 原始数据集加载完毕，共 {len(original_map)} 条数据。")
 
     final_samples = []
 
@@ -112,10 +112,10 @@ def sample_strategy():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(final_samples, f, indent=4, ensure_ascii=False)
 
-    print(f"🎉 抽样完成！共 {len(final_samples)} 条数据。")
-    print(f"💾 结果已保存至: {OUTPUT_JSON}")
+    print(f" 抽样完成！共 {len(final_samples)} 条数据。")
+    print(f" 结果已保存至: {OUTPUT_JSON}")
     print(
-        "👉 接下来你可以使用 Claude API 脚本读取此文件并填入 'Claude_Judge_Score'，或者人工阅读此文件进行打分。"
+        " 接下来你可以使用 Claude API 脚本读取此文件并填入 'Claude_Judge_Score'，或者人工阅读此文件进行打分。"
     )
 
 

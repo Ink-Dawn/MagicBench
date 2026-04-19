@@ -1,31 +1,31 @@
 {
     "Truth Context (Upper Bound)": {
         "Type A: Direct Lie": {
-            "count": 142,
+            "count": 146,
             "VTG": 75.99,
             "CPA": 74.15,
             "CFR": 85.14
         },
         "Type B: Misdirection": {
-            "count": 38,
+            "count": 91,
             "VTG": 66.84,
             "CPA": 66.58,
             "CFR": 72.89
         },
         "Type C: Patter": {
-            "count": 84,
+            "count": 83,
             "VTG": 75.0,
             "CPA": 74.64,
             "CFR": 86.55
         },
         "Type D: No Audio": {
-            "count": 16,
+            "count": 82,
             "VTG": 75.0,
             "CPA": 75.0,
             "CFR": 85.0
         },
         "Total": {
-            "count": 280,
+            "count": 402,
             "VTG": 74.39,
             "CPA": 73.32,
             "CFR": 83.89
@@ -34,31 +34,31 @@
     },
     "Multimodal (Neutral)": {
         "Type A: Direct Lie": {
-            "count": 142,
+            "count": 146,
             "VTG": 50.63,
             "CPA": 28.8,
             "CFR": 54.44
         },
         "Type B: Misdirection": {
-            "count": 38,
+            "count": 91,
             "VTG": 42.89,
             "CPA": 30.26,
             "CFR": 48.16
         },
         "Type C: Patter": {
-            "count": 84,
+            "count": 83,
             "VTG": 41.67,
             "CPA": 20.12,
             "CFR": 39.76
         },
         "Type D: No Audio": {
-            "count": 16,
+            "count": 82,
             "VTG": 33.75,
             "CPA": 20.0,
             "CFR": 38.75
         },
         "Total": {
-            "count": 280,
+            "count": 402,
             "VTG": 45.93,
             "CPA": 25.89,
             "CFR": 48.29
@@ -67,31 +67,31 @@
     },
     "Multimodal (Skeptic)": {
         "Type A: Direct Lie": {
-            "count": 107,
+            "count": 146,
             "VTG": 52.62,
             "CPA": 35.33,
             "CFR": 60.09
         },
         "Type B: Misdirection": {
-            "count": 33,
+            "count": 91,
             "VTG": 46.06,
             "CPA": 28.79,
             "CFR": 55.15
         },
         "Type C: Patter": {
-            "count": 67,
+            "count": 83,
             "VTG": 43.88,
             "CPA": 31.64,
             "CFR": 51.49
         },
         "Type D: No Audio": {
-            "count": 13,
+            "count": 82,
             "VTG": 33.85,
             "CPA": 6.15,
             "CFR": 21.54
         },
         "Total": {
-            "count": 220,
+            "count": 402,
             "VTG": 47.86,
             "CPA": 31.5,
             "CFR": 54.45
@@ -100,31 +100,31 @@
     },
     "Vision-Only (Capability Probe)": {
         "Type A: Direct Lie": {
-            "count": 142,
+            "count": 146,
             "VTG": 47.89,
             "CPA": 32.39,
             "CFR": 52.75
         },
         "Type B: Misdirection": {
-            "count": 38,
+            "count": 91,
             "VTG": 41.05,
             "CPA": 34.47,
             "CFR": 48.68
         },
         "Type C: Patter": {
-            "count": 84,
+            "count": 83,
             "VTG": 46.07,
             "CPA": 35.71,
             "CFR": 50.95
         },
         "Type D: No Audio": {
-            "count": 16,
+            "count": 82,
             "VTG": 41.25,
             "CPA": 30.62,
             "CFR": 47.5
         },
         "Total": {
-            "count": 280,
+            "count": 402,
             "VTG": 46.04,
             "CPA": 33.57,
             "CFR": 51.36
@@ -133,31 +133,31 @@
     },
     "Multimodal (Forensic)": {
         "Type A: Direct Lie": {
-            "count": 144,
+            "count": 146,
             "VTG": 58.75,
             "CPA": 48.68,
             "CFR": 63.54
         },
         "Type B: Misdirection": {
-            "count": 38,
+            "count": 91,
             "VTG": 57.37,
             "CPA": 40.26,
             "CFR": 57.11
         },
         "Type C: Patter": {
-            "count": 90,
+            "count": 83,
             "VTG": 47.78,
             "CPA": 32.33,
             "CFR": 46.33
         },
         "Type D: No Audio": {
-            "count": 26,
+            "count": 82,
             "VTG": 34.62,
             "CPA": 22.69,
             "CFR": 33.85
         },
         "Total": {
-            "count": 298,
+            "count": 402,
             "VTG": 53.15,
             "CPA": 40.4,
             "CFR": 54.93

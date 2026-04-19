@@ -36,7 +36,7 @@ COLORS = ["#d62728", "#ff7f0e", "#9467bd", "#1f77b4", "#2ca02c"]
 
 def load_processed_data(json_path):
     if not os.path.exists(json_path):
-        print(f"❌ 错误: 找不到文件 {json_path}")
+        print(f" 错误: 找不到文件 {json_path}")
         return None
 
     with open(json_path, "r", encoding="utf-8") as f:
@@ -46,7 +46,7 @@ def load_processed_data(json_path):
     # 按照 FILE_MAPPING 定义的顺序加载数据
     for json_key, legend_label in FILE_MAPPING.items():
         if json_key not in raw_data:
-            print(f"⚠️ 跳过: JSON 中缺少 {json_key}")
+            print(f" 跳过: JSON 中缺少 {json_key}")
             continue
 
         method_data = raw_data[json_key]
