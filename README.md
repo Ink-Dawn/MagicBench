@@ -4,7 +4,7 @@
 
 MagicBench is a diagnostic benchmark for evaluating visual agency loss and semantic dependency in multimodal LLMs. Using magic tricks as semantically adversarial tasks, it investigates whether models genuinely reason over visual evidence or merely over-rely on deceptive spoken language.
 
-![MagicBench Intervention](docs/assets/figures/robustness_trend_line.png)
+![MagicBench Intervention](docs/assets/figures/figure4_final.png)
 
 ## Quick Links
 
